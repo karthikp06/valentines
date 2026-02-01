@@ -102,20 +102,26 @@
     audio.play();
   }
 
-  function startHearts() {
-    for (let i = 0; i < 2000; i++) {
-      const heart = document.createElement("div");
-      heart.innerHTML = "💖";
-      heart.style.position = "fixed";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.top = "-10px";
-      heart.style.fontSize = "20px";
-      heart.style.animation = "fall 4s linear";
-      document.body.appendChild(heart);
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "❤️";
 
-      setTimeout(() => heart.remove(), 4000);
-    }
-  }
+  heart.style.left = Math.random() * 100 + "vw";
+
+  const duration = Math.random() * 3 + 2;
+  heart.style.animationDuration = duration + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, duration * 1000);
+}
+
+// Create hearts repeatedly
+setInterval(createHeart, 300);
+
 </script>
 </body>
 </html>
