@@ -53,11 +53,12 @@
       font-size: 20px;
       animation: fall linear forwards;
     }
-    @keyframes fall {
-      to {
-        transform: translateY(110vh);
-      }
-    }
+  @keyframes fall {
+  to {
+    transform: translateY(110vh) translateX(30px);
+  }
+}
+
   </style>
 </head>
 <body>
@@ -102,25 +103,27 @@
     audio.play();
   }
 
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.classList.add("heart");
-  heart.innerHTML = "❤️";
+function startHearts() {
+  for (let i = 0; i < 60; i++) {
+    setTimeout(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "💖";
 
-  heart.style.left = Math.random() * 100 + "vw";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 10 + 15 + "px";
 
-  const duration = Math.random() * 3 + 2;
-  heart.style.animationDuration = duration + "s";
+      // random fall speed
+      const duration = Math.random() * 2 + 3;
+      heart.style.animationDuration = duration + "s";
 
-  document.body.appendChild(heart);
+      document.body.appendChild(heart);
 
-  setTimeout(() => {
-    heart.remove();
-  }, duration * 1000);
+      setTimeout(() => heart.remove(), duration * 1000);
+    }, Math.random() * 2000); // 🔥 random start time
+  }
 }
 
-// Create hearts repeatedly
-setInterval(createHeart, 300);
 
 </script>
 </body>
