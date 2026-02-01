@@ -110,19 +110,20 @@ function startHearts() {
       heart.className = "heart";
       heart.innerHTML = "💖";
 
-      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+
       heart.style.fontSize = Math.random() * 10 + 15 + "px";
 
-      // random fall speed
       const duration = Math.random() * 2 + 3;
       heart.style.animationDuration = duration + "s";
 
       document.body.appendChild(heart);
 
       setTimeout(() => heart.remove(), duration * 1000);
-    }, Math.random() * 2000); // 🔥 random start time
+    }, Math.random() * 3000); // ← THIS breaks the single line
   }
 }
+
 
 
 </script>
